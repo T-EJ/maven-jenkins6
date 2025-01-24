@@ -4,7 +4,7 @@ pipeline {
         stage('git-code-download') {
             steps {
                 echo "Download code from Git"
-                git branch: 'main', url: 'https://github.com/devopstechlab/maven-jenkins6.git'
+                git branch: 'main', url: 'https://github.com/T-EJ/maven-jenkins6.git'
             }
         }
         stage('create-docker-image') {
@@ -12,8 +12,6 @@ pipeline {
                 sh '''
                 docker build -t devopstechlab/javawebapp:${BUILD_NUMBER} .
                 docker tag devopstechlab/javawebapp:${BUILD_NUMBER} devopstechlab/javawebapp:latest
-                docker push devopstechlab/javawebapp:${BUILD_NUMBER}
-                docker push devopstechlab/javawebapp:latest
                 '''
             }
         }
