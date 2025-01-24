@@ -11,7 +11,9 @@ pipeline {
             steps {
                 sh '''
                 docker build -t tejmt/javawebapp:${BUILD_NUMBER} .
-                docker tag devopstechlab/javawebapp:${BUILD_NUMBER} devopstechlab/javawebapp:latest
+                docker tag tejmt/javawebapp:${BUILD_NUMBER} tejmt/javawebapp:latest
+                docker push tejmt/javawebapp:${BUILD_NUMBER}
+                docker push tejmt/javawebapp:latest
                 '''
             }
         }
